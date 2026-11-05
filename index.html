@@ -1,76 +1,149 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professor Elberth Moraes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background: #f4f6f9;
-            color: #263238;
-        }
-        header {
-            background: #142b49;
-            color: white;
-            text-align: center;
-            padding: 60px 20px;
-        }
-        main {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        section {
-            background: white;
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-        }
-        a { color: #1769aa; }
-        footer {
-            text-align: center;
-            padding: 25px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portal acadêmico e profissional de Elberth Moraes: tecnologia, educação, desenvolvimento de software e materiais de apoio.">
+  <meta name="theme-color" content="#0c1932">
+  <title>Elberth Moraes | Tecnologia & Educação</title>
+  <style>
+    :root { --navy:#0c1932; --navy2:#142b4f; --blue:#2e85ef; --sky:#cde8ff; --ink:#17263e; --muted:#60718a; --line:#e2e9f2; --bg:#f6f9fd; --white:#fff; --radius:20px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:85px; }
+    body { margin:0; color:var(--ink); font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); }
+    a { color:inherit; text-decoration:none; }
+    a:focus-visible,button:focus-visible { outline:3px solid #80b9ff; outline-offset:4px; }
+    .container { width:min(1120px,calc(100% - 40px)); margin-inline:auto; }
+    .topbar { position:sticky;top:0;z-index:10;background:#0c1932ed;backdrop-filter:blur(12px);border-bottom:1px solid #ffffff20;color:white; }
+    .nav { min-height:73px;display:flex;align-items:center;justify-content:space-between;gap:20px; }
+    .brand { font-weight:800;letter-spacing:-.04em;font-size:1.2rem;white-space:nowrap; }
+    .brand span { color:#65b7ff; }
+    .navlinks { display:flex;align-items:center;gap:24px;font-size:.9rem;font-weight:600;color:#d8e3f4; }
+    .navlinks a:hover,.footer a:hover { color:#70baff; }
+    .menu-button { display:none;border:1px solid #ffffff48;border-radius:10px;background:transparent;color:white;padding:8px 12px;font:inherit;cursor:pointer; }
+    .hero { background:radial-gradient(circle at 81% 24%,#235491 0,transparent 34%),linear-gradient(120deg,#0c1932,#152f53 78%);color:white;overflow:hidden; }
+    .hero-inner { min-height:510px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:50px;padding-block:75px 85px; }
+    .eyebrow { color:#82c7ff;text-transform:uppercase;letter-spacing:.17em;font-size:.73rem;font-weight:800; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(2.8rem,5vw,4.9rem);line-height:1.08;letter-spacing:-.055em;margin:14px 0 20px; }
+    .hero h1 span { color:#8cc9ff; }
+    .hero p { color:#d4e1f3;font-size:1.1rem;max-width:615px; }
+    .buttons { display:flex;gap:12px;flex-wrap:wrap;margin-top:29px; }
+    .btn { display:inline-flex;align-items:center;justify-content:center;gap:9px;border-radius:11px;padding:12px 19px;font-weight:750;font-size:.92rem;transition:transform .15s,background .15s; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { color:#08182e;background:#8dccff; }
+    .btn-primary:hover { background:#b4e0ff; }
+    .btn-secondary { color:white;border:1px solid #8098bc6e;background:#ffffff0c; }
+    .hero-card { position:relative;max-width:370px;width:100%;justify-self:center;padding:27px;background:#ffffff12;border:1px solid #ffffff30;border-radius:28px;box-shadow:0 20px 65px #0613267c; }
+    .avatar { width:100px;height:100px;display:grid;place-items:center;border-radius:24px;font-size:2.5rem;background:linear-gradient(135deg,#4a9ded,#9bd3ff);color:#08213e;font-weight:900;letter-spacing:-.09em; }
+    .hero-card h2 { margin:21px 0 3px;font-size:1.45rem; }
+    .hero-card p { margin:0;font-size:.9rem;color:#ccdcf3; }
+    .hero-card .tags { margin-top:23px;display:flex;gap:8px;flex-wrap:wrap; }
+    .tag { display:inline-block;border:1px solid #b4d7ff50;color:#e2f1ff;border-radius:999px;padding:5px 10px;font-size:.72rem;font-weight:700; }
+    section { padding-block:78px; }
+    .section-top { max-width:710px;margin-bottom:32px; }
+    .section-top h2 { font-size:clamp(1.9rem,3vw,2.65rem);line-height:1.2;letter-spacing:-.04em;margin:8px 0 13px; }
+    .section-top p,.muted { color:var(--muted); }
+    .about-grid { display:grid;grid-template-columns:1.3fr .7fr;gap:23px; }
+    .panel { background:white;border:1px solid var(--line);border-radius:var(--radius);padding:29px;box-shadow:0 8px 28px #24446d0b; }
+    .panel p:last-child { margin-bottom:0; }
+    .panel h3 { font-size:1.14rem; }
+    .facts { display:grid;gap:20px; }
+    .fact small { display:block;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-weight:750;font-size:.68rem; }
+    .fact strong { display:block;font-size:1rem;margin-top:2px; }
+    .cards { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px; }
+    .course { display:flex;flex-direction:column;min-height:248px; }
+    .course-top { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+    .course-label { color:#2066ba;font-size:.74rem;text-transform:uppercase;letter-spacing:.09em;font-weight:850; }
+    .course h3 { font-size:1.27rem;line-height:1.32;margin:15px 0 9px; }
+    .course p { color:var(--muted);font-size:.94rem; }
+    .course a { margin-top:auto;color:#1268ba;font-weight:750;font-size:.9rem; }
+    .course a:hover { text-decoration:underline; }
+    .topics { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px; }
+    .topic-icon { height:42px;width:42px;border-radius:13px;display:grid;place-items:center;font-size:1.25rem;background:#e5f2ff;margin-bottom:18px; }
+    .topic p { color:var(--muted);margin-bottom:0;font-size:.94rem; }
+    .band { background:#edf4fc; }
+    .contact-panel { background:linear-gradient(110deg,#122747,#214d7d);color:white;border-radius:25px;padding:38px;display:flex;align-items:center;justify-content:space-between;gap:25px; }
+    .contact-panel h2 { font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.2;letter-spacing:-.035em;margin:8px 0 10px; }
+    .contact-panel p { margin:0;color:#d7e6f7; }
+    .footer { background:var(--navy);color:#a9bed6;padding:27px 0;font-size:.86rem; }
+    .footer-inner { display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap; }
+    @media(max-width:800px) { .hero-inner,.about-grid { grid-template-columns:1fr; } .hero-inner { gap:32px;padding-block:55px; } .hero-card { justify-self:start;max-width:100%; } .topics { grid-template-columns:1fr; } .contact-panel { align-items:flex-start;flex-direction:column; } }
+    @media(max-width:650px) { .navlinks { display:none;position:absolute;left:0;right:0;top:73px;background:#0c1932;padding:20px;flex-direction:column;align-items:flex-start;gap:16px;border-top:1px solid #ffffff30; } .navlinks.open { display:flex; } .menu-button { display:block; } .cards { grid-template-columns:1fr; } section { padding-block:56px; } .panel { padding:23px; } .contact-panel { padding:27px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .btn { transition:none; } }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Professor Elberth Moraes</h1>
-        <p>Tecnologia • Educação • Desenvolvimento de Software</p>
-    </header>
-
-    <main>
-        <section>
-            <h2>Sobre mim</h2>
-            <p>
-                Bem-vindo ao meu espaço de ensino e tecnologia!
-                Aqui compartilho projetos, exemplos práticos
-                e materiais de apoio às disciplinas.
-            </p>
-        </section>
-
-        <section>
-            <h2>Disciplinas</h2>
-            <p>Fundamentos de Desenvolvimento com Java</p>
-            <p>Desenvolvimento Back-End</p>
-            <p>Spring e Microsserviços</p>
-        </section>
-
-        <section>
-            <h2>Projetos e códigos</h2>
-            <p>
-                <a href="https://github.com/elberthmoraes-prof">
-                    Acessar meus repositórios no GitHub
-                </a>
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        © 2026 - Professor Elberth Moraes
-    </footer>
+  <header class="topbar">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="#inicio">Elberth<span>.</span>Moraes</a>
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="navlinks">☰ Menu</button>
+      <div class="navlinks" id="navlinks">
+        <a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#disciplinas">Disciplinas</a><a href="#atuacao">Atuação</a><a href="#contato">Contato</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="hero" id="inicio">
+      <div class="hero-inner container">
+        <div>
+          <div class="eyebrow">Tecnologia • Educação • Desenvolvimento</div>
+          <h1>Conhecimento que se <span>transforma em prática.</span></h1>
+          <p>Sou Elberth Moraes, professor, coordenador acadêmico e profissional de tecnologia. Este espaço reúne minha trajetória, projetos e materiais de apoio para quem aprende e desenvolve software.</p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="#disciplinas">Explorar disciplinas ↗</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/elberth/" target="_blank" rel="noopener noreferrer">Meu LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Cartão de apresentação">
+          <div class="avatar" aria-hidden="true">EM</div>
+          <h2>Elberth Moraes</h2>
+          <p>Professor • Coordenação acadêmica • Liderança técnica</p>
+          <div class="tags"><span class="tag">Java</span><span class="tag">Engenharia de Software</span><span class="tag">Educação</span><span class="tag">Tecnologia</span></div>
+        </div>
+      </div>
+    </div>
+    <section id="sobre" class="container">
+      <div class="section-top"><div class="eyebrow" style="color:#2776c9">Quem sou</div><h2>Experiência profissional e compromisso com o ensino</h2><p>Conectando desafios reais de desenvolvimento de sistemas com uma aprendizagem prática e acessível.</p></div>
+      <div class="about-grid">
+        <article class="panel"><h3>Olá, seja bem-vindo!</h3><p>Atuo na área de tecnologia, com experiência em desenvolvimento de sistemas, liderança técnica e trabalho em equipes multidisciplinares. Também me dedico à docência e à coordenação acadêmica, apoiando a formação de profissionais de tecnologia.</p><p>Neste portal, compartilho repositórios e materiais das disciplinas, valorizando a experimentação, a resolução de problemas e a aproximação entre teoria e prática.</p></article>
+        <aside class="panel facts" aria-label="Resumo profissional">
+          <div class="fact"><small>Atuação em tecnologia</small><strong>Dataprev · Liderança técnica</strong></div>
+          <div class="fact"><small>Atuação em educação</small><strong>Instituto Infnet · Docência e coordenação</strong></div>
+          <div class="fact"><small>Interesses</small><strong>Desenvolvimento de software, IA e aprendizagem</strong></div>
+        </aside>
+      </div>
+    </section>
+    <section id="disciplinas" class="band">
+      <div class="container">
+        <div class="section-top"><div class="eyebrow" style="color:#2776c9">Aprender fazendo</div><h2>Disciplinas e repositórios</h2><p>Acesse exemplos e projetos publicados no GitHub. Os repositórios são organizados por disciplina ou turma.</p></div>
+        <div class="cards">
+          <article class="panel course"><div class="course-top"><span class="course-label">Fundamentos · Java</span><span aria-hidden="true">☕</span></div><h3>Fundamentos de Desenvolvimento com Java</h3><p>Primeiros conceitos, sintaxe e exercícios de programação em Java.</p><a href="https://github.com/elberthmoraes-prof/Fundamentos-de-Desenvolvimento-com-Java-26E3" target="_blank" rel="noopener noreferrer">Acessar repositório ↗</a></article>
+          <article class="panel course"><div class="course-top"><span class="course-label">Back-end · Turma 1900</span><span aria-hidden="true">⌘</span></div><h3>Desenvolvimento Back-End</h3><p>Repositório da turma 1900 com atividades e implementações.</p><a href="https://github.com/elberthmoraes-prof/Desenvolvimento-Back-End-26E4-27E1-1900" target="_blank" rel="noopener noreferrer">Acessar repositório ↗</a></article>
+          <article class="panel course"><div class="course-top"><span class="course-label">Back-end · Turma 2030</span><span aria-hidden="true">⌘</span></div><h3>Desenvolvimento Back-End</h3><p>Repositório da turma 2030 para acompanhamento dos exemplos de aula.</p><a href="https://github.com/elberthmoraes-prof/Desenvolvimento-Back-End-26E4-27E1-2030" target="_blank" rel="noopener noreferrer">Acessar repositório ↗</a></article>
+          <article class="panel course"><div class="course-top"><span class="course-label">Java · Spring</span><span aria-hidden="true">⚙</span></div><h3>Desenvolvimento Avançado com Spring e Microsserviços</h3><p>Exemplos relacionados ao ecossistema Spring e ao desenvolvimento de serviços.</p><a href="https://github.com/elberthmoraes-prof/Desenvolvimento-Avancado-com-Spring-e-Microsservicos-26E3-26E3" target="_blank" rel="noopener noreferrer">Acessar repositório ↗</a></article>
+        </div>
+      </div>
+    </section>
+    <section id="atuacao" class="container">
+      <div class="section-top"><div class="eyebrow" style="color:#2776c9">Áreas de atuação</div><h2>Tecnologia, pessoas e aprendizagem</h2><p>Três dimensões que orientam minha atuação profissional e acadêmica.</p></div>
+      <div class="topics">
+        <article class="panel topic"><div class="topic-icon" aria-hidden="true">⌨</div><h3>Engenharia de software</h3><p>Desenvolvimento de aplicações, APIs, integração de sistemas e boas práticas de engenharia.</p></article>
+        <article class="panel topic"><div class="topic-icon" aria-hidden="true">▤</div><h3>Educação em tecnologia</h3><p>Ensino com exemplos práticos e projetos que aproximam conteúdos acadêmicos do mercado.</p></article>
+        <article class="panel topic"><div class="topic-icon" aria-hidden="true">◎</div><h3>Liderança e colaboração</h3><p>Atuação com equipes, compartilhamento de conhecimento e melhoria contínua.</p></article>
+      </div>
+    </section>
+    <section id="contato" class="container" style="padding-top:5px">
+      <div class="contact-panel"><div><div class="eyebrow">Vamos nos conectar</div><h2>Compartilhar conhecimento abre caminhos.</h2><p>Visite meus perfis para acompanhar projetos e publicações.</p></div><div class="buttons"><a class="btn btn-primary" href="https://www.linkedin.com/in/elberth/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a class="btn btn-secondary" href="https://github.com/elberthmoraes-prof" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Elberth Moraes. Tecnologia & Educação.</span><span>Desenvolvido para <a href="https://pages.github.com/" target="_blank" rel="noopener noreferrer">GitHub Pages</a>.</span></div></footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const menu = document.getElementById('menu-button');
+    const links = document.getElementById('navlinks');
+    menu.addEventListener('click', () => { const open = links.classList.toggle('open'); menu.setAttribute('aria-expanded', String(open)); });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); menu.setAttribute('aria-expanded','false'); }));
+  </script>
 </body>
 </html>
